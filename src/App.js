@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
   UserOutlined,
-  VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 import { Link, Route, Routes } from "react-router-dom";
-import Material from "./components/Materials";
+import MaterialList from "./components/Materials/listing";
+import AddMaterials from "./components/Materials/form";
 const { Header, Sider, Content } = Layout;
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -30,25 +29,24 @@ const App = () => {
           defaultSelectedKeys={["1"]}
           items={[
             {
-              key: "/werew",
+              key: "/1",
               icon: <UserOutlined />,
               label: <Link to="/">Dashboard</Link>,
             },
             {
-              key: "/wer",
+              key: "/2",
               icon: <UserOutlined />,
-              label: <Link to="/aa">Home</Link>,
+              label: <Link to="/add-materials">Add Material</Link>,
             },
             {
-              key: "2",
-              icon: <VideoCameraOutlined />,
-              label: <Link to="/aa">Material</Link>,
+              key: "/3",
+              icon: <UserOutlined />,
+              label: <Link to="/materials">Material</Link>,
             },
             {
-              key: "3",
-              icon: <UploadOutlined />,
-              label: "nav 3",
-              type: "submenu",
+              key: "/4",
+              icon: <UserOutlined />,
+              label: <Link to="/materials">Material</Link>,
             },
           ]}
         />
@@ -83,11 +81,16 @@ const App = () => {
           }}
         >
           <Routes>
-            <Route key="home" path="/" element={<Material />} />
+            <Route key="home" path="/" />
             <Route
-              key="medeee"
-              path="/aa"
-              element={<Material name={"hhhh"} />}
+              key="add-materials"
+              path="/add-materials"
+              element={<AddMaterials />}
+            />
+            <Route
+              key="materials"
+              path="/materials"
+              element={<MaterialList />}
             />
           </Routes>
         </Content>
