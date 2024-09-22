@@ -1,17 +1,6 @@
-import { Route, Routes } from "react-router-dom";
 import MaterialList from "./listing";
 
-const Material = () => {
-  return (
-    <>
-      <Routes>
-        <Route
-          key="material-list"
-          path="/material-list"
-          element={<MaterialList />}
-        />
-      </Routes>
-    </>
-  );
+const Material = ({ name }) => {
+  return name ? <div>{name}</div> : <MaterialList />;
 };
 export default Material;
